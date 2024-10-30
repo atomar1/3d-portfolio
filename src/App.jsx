@@ -3,7 +3,6 @@ import About from './sections/About.jsx';
 import Footer from './sections/Footer.jsx';
 import Navbar from './sections/Navbar.jsx';
 import Contact from './sections/Contact.jsx';
-import Clients from './sections/Clients.jsx';
 import Projects from './sections/Projects.jsx';
 import WorkExperience from './sections/Experience.jsx';
 
@@ -13,8 +12,7 @@ const App = () => {
       <Navbar />
       <Hero />
       <About />
-      <Projects />
-      <Clients />
+      <Projects />     
       <WorkExperience />
       <Contact />
       <Footer />
@@ -23,7 +21,3 @@ const App = () => {
 };
 
 export default App;
-
-{/* 
- 
- */}
