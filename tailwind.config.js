@@ -5,6 +5,7 @@ export default {
     extend: {
       fontFamily: {
         generalsans: ['General Sans', 'sans-serif'],
+        montserrat: ['Montserrat', 'sans-serif'],
       },
       colors: {
         black: {

@@ -34,7 +34,7 @@ const Hero = () => {
       <Canvas className="w-full h-full">
       <Suspense fallback={<CanvasLoader />}>
             {/* To hide controller */}
-            <Leva hidden />
+            <Leva hidden/>
             <PerspectiveCamera makeDefault position={[0, 0, 30]} />
 
             <HeroCamera isMobile={isMobile}>
