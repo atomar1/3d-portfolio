@@ -1,3 +1,4 @@
+
 export const navLinks = [
   {
     id: 1,
@@ -211,7 +212,7 @@ export const myProjects = [
   },
 ];
 
-export const calculateSizes = (isSmall, isMobile, isTablet) => {
+/* export const calculateSizes = (isSmall, isMobile, isTablet) => {
   return {
     deskScale: isSmall ? 0.05 : isMobile ? 0.06 : 0.065,
     deskPosition: isMobile ? [0.5, -4.5, 0] : [0.25, -5.5, 0],
@@ -221,6 +222,99 @@ export const calculateSizes = (isSmall, isMobile, isTablet) => {
     targetPosition: isSmall ? [-5, -10, -10] : isMobile ? [-9, -10, -10] : isTablet ? [-11, -7, -10] : [-13, -13, -10],
   };
 };
+ */
+
+export const calculateSizes = (isSmall, isMobile, isTablet) => {
+  // Helper function to determine if it's a wide screen
+  const isWideScreen = typeof window !== 'undefined' && window.innerWidth >= 1440;
+  const isUltraWide = typeof window !== 'undefined' && window.innerWidth >= 1920;
+
+  const baseScales = {
+    deskScale: isSmall ? 0.05 : isMobile ? 0.06 : isTablet ? 0.065 : 0.07,
+    deskPosition: isMobile ? [0.5, -4.5, 0] : isTablet ? [0.25, -5.5, 0] : [0.25, -5.5, 0],
+    cubePosition: isSmall ? [4, -5, 0] : isMobile ? [5, -5, 0] : isTablet ? [5, -5, 0] : [9, -5.5, 0],
+    reactLogoPosition: isSmall 
+      ? [3, 4, 0] 
+      : isMobile 
+      ? [5, 4, 0] 
+      : isTablet 
+      ? [5, 4, 0] 
+      : [12, 3, 0],
+    ringPosition: isSmall 
+      ? [-5, 7, 0] 
+      : isMobile 
+      ? [-10, 10, 0] 
+      : isTablet 
+      ? [-12, 10, 0] 
+      : [-24, 10, 0],
+    targetPosition: isSmall 
+      ? [-5, -10, -10] 
+      : isMobile 
+      ? [-9, -10, -10] 
+      : isTablet 
+      ? [-11, -7, -10] 
+      : [-13, -13, -10],
+  };
+
+  // Adjust sizes for wide screens
+  if (isWideScreen) {
+    return {
+      deskScale: baseScales.deskScale * 0.8,
+      deskPosition: [baseScales.deskPosition[0], baseScales.deskPosition[1], baseScales.deskPosition[2]],
+      cubePosition: [
+        baseScales.cubePosition[0] * 1.3,
+        baseScales.cubePosition[1],
+        baseScales.cubePosition[2]
+      ],
+      reactLogoPosition: [
+        baseScales.reactLogoPosition[0] * 0.25,
+        baseScales.reactLogoPosition[1],
+        baseScales.reactLogoPosition[2]
+      ],
+      ringPosition: [
+        baseScales.ringPosition[0] * 1.3,
+        baseScales.ringPosition[1],
+        baseScales.ringPosition[2]
+      ],
+      targetPosition: [
+        baseScales.targetPosition[0] * 1.3,
+        baseScales.targetPosition[1],
+        baseScales.targetPosition[2]
+      ],
+    };
+  }
+
+  // Additional adjustments for ultra-wide screens
+  if (isUltraWide) {
+    return {
+      deskScale: baseScales.deskScale * 1.4,
+      deskPosition: [baseScales.deskPosition[0], baseScales.deskPosition[1], baseScales.deskPosition[2]],
+      cubePosition: [
+        baseScales.cubePosition[0] * 1.5,
+        baseScales.cubePosition[1],
+        baseScales.cubePosition[2]
+      ],
+      reactLogoPosition: [
+        baseScales.reactLogoPosition[0] * 1.5,
+        baseScales.reactLogoPosition[1],
+        baseScales.reactLogoPosition[2]
+      ],
+      ringPosition: [
+        baseScales.ringPosition[0] * 1.5,
+        baseScales.ringPosition[1],
+        baseScales.ringPosition[2]
+      ],
+      targetPosition: [
+        baseScales.targetPosition[0] * 1.5,
+        baseScales.targetPosition[1],
+        baseScales.targetPosition[2]
+      ],
+    };
+  }
+
+  return baseScales;
+};
+
 
 export const workExperiences = [
   {

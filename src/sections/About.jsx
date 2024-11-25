@@ -1,7 +1,83 @@
-import { useState } from 'react';
+"use client";
+import { useState, useEffect, useMemo } from 'react';
 import Globe from 'react-globe.gl';
-
+import { useTheme } from "next-themes";
+import {
+  Cloud,
+  fetchSimpleIcons,
+  renderSimpleIcon,
+} from "react-icon-cloud";
 import Button from '../components/Button.jsx';
+
+// Cloud configuration props
+const cloudProps = {
+  containerProps: {
+    style: {
+      display: "flex",
+      justifyContent: "center",
+      alignItems: "center",
+      width: "100%",
+      paddingTop: 40,
+    },
+  },
+  options: {
+    reverse: true,
+    depth: 1,
+    wheelZoom: false,
+    imageScale: 2,
+    activeCursor: "default",
+    tooltip: "native",
+    initial: [0.1, -0.1],
+    clickToFront: 500,
+    tooltipDelay: 0,
+    outlineColour: "#0000",
+    maxSpeed: 0.04,
+    minSpeed: 0.02,
+  },
+};
+
+// Icon rendering function
+const renderCustomIcon = (icon, theme) => {
+  const bgHex = theme === "light" ? "#f3f2ef" : "#080510";
+  const fallbackHex = theme === "light" ? "#6e6e73" : "#ffffff";
+  const minContrastRatio = theme === "dark" ? 2 : 1.2;
+  return renderSimpleIcon({
+    icon,
+    bgHex,
+    fallbackHex,
+    minContrastRatio,
+    size: 42,
+    aProps: {
+      href: undefined,
+      target: undefined,
+      rel: undefined,
+      onClick: (e) => e.preventDefault(),
+    },
+  });
+};
+
+// IconCloud component
+function IconCloud({ iconSlugs }) {
+  const [data, setData] = useState(null);
+  const { theme } = useTheme();
+
+  useEffect(() => {
+    fetchSimpleIcons({ slugs: iconSlugs }).then(setData);
+  }, [iconSlugs]);
+
+  const renderedIcons = useMemo(() => {
+    if (!data) return null;
+    return Object.values(data.simpleIcons).map((icon) =>
+      renderCustomIcon(icon, theme || "light")
+    );
+  }, [data, theme]);
+
+  return (
+    <Cloud {...cloudProps}>
+      <>{renderedIcons}</>
+    </Cloud>
+  );
+}
 
 const About = () => {
   const [hasCopied, setHasCopied] = useState(false);
@@ -15,6 +91,23 @@ const About = () => {
     }, 2000);
   };
 
+  const technologiesIcons = [
+    'javascript',
+    'typescript',
+    'react',
+    'nextjs',
+    'nodejs',
+    'python',
+    'mongodb',
+    'postgresql',
+    'tailwindcss',
+    'html5',
+    'css3',
+    'git',
+    'github',
+    'vscode'
+  ];
+
   return (
     <section className="c-space my-20" id="about">
       <div className="grid xl:grid-cols-3 xl:grid-rows-6 md:grid-cols-2 grid-cols-1 gap-5 h-full">
@@ -23,9 +116,9 @@ const About = () => {
             <img src="assets/grid1.png" alt="grid-1" className="w-full sm:h-[276px] h-fit object-contain" />
 
             <div>
-              <p className="grid-headtext">Hi, I’m Ansh Tomar</p>
+              <p className="grid-headtext">Hi, I'm Ansh Tomar</p>
               <p className="grid-subtext">
-                With 12 years of experience, I have honed my skills in both frontend and backend dev, creating dynamic
+                With 2 years of experience, I have honed my skills in both frontend and backend dev, creating dynamic
                 and responsive websites.
               </p>
             </div>
@@ -34,13 +127,15 @@ const About = () => {
 
         <div className="col-span-1 xl:row-span-3">
           <div className="grid-container">
-            <img src="assets/grid2.png" alt="grid-2" className="w-full sm:h-[276px] h-fit object-contain" />
+            <div className="w-full sm:h-[276px] h-fit flex items-center justify-center">
+              <IconCloud iconSlugs={technologiesIcons} />
+            </div>
 
             <div>
               <p className="grid-headtext">Tech Stack</p>
               <p className="grid-subtext">
-                I specialize in a variety of languages, frameworks, and tools that allow me to build robust and scalable
-                applications
+              I’m skilled in using a diverse set of languages, frameworks, and tools, which gives me the flexibility to build 
+              applications that are both reliable and scalable, no matter the challenge
               </p>
             </div>
           </div>
@@ -62,9 +157,11 @@ const About = () => {
               />
             </div>
             <div>
-              <p className="grid-headtext">I’m very flexible with time zone communications & locations</p>
+              <p className="grid-headtext">I'm very flexible with time zone communications & locations</p>
               <p className="grid-subtext">I&apos;m based in California, U.S. and open to remote work worldwide.</p>
-              <Button name="Contact Me" isBeam containerClass="w-full mt-10" />
+              <a href="#contact" className="w-fit">
+                <Button name="Contact Me" isBeam containerClass="w-full mt-10" />
+              </a>
             </div>
           </div>
         </div>
