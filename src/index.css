@@ -44,14 +44,15 @@ body {
 
   /* button component */
   .btn {
-    @apply flex gap-4 items-center justify-center cursor-pointer p-3 rounded-md bg-black-300  transition-all active:scale-95 text-white mx-auto;
+    @apply flex gap-4 items-center justify-center cursor-pointer p-3 rounded-md text-white transition-all active:scale-95 mx-auto;
+    background-image: linear-gradient(to right, #1f2937, #111827, #000000); /* Dark gradient */
   }
 
 
   .btn-ping {
     @apply animate-ping absolute inline-flex h-full w-full rounded-full bg-green-400 opacity-75;
   }
-
+                                           
   .btn-ping_dot {
     @apply relative inline-flex rounded-full h-3 w-3 bg-green-500;
   }
@@ -69,7 +70,7 @@ body {
   
 
   .grid-headtext {
-    @apply text-xl font-semibold mb-2 text-white font-montserrat;
+    @apply text-xl font-semibold mb-2 font-montserrat bg-gradient-to-r from-green-400 via-yellow-200 to-orange-500 bg-clip-text text-transparent;
   }
 
   .grid-subtext {
@@ -114,26 +115,26 @@ body {
     @apply flex-1 w-0.5 mt-4 h-full bg-black-300 group-hover:bg-black-500 group-last:hidden;
   }
 
-  /* contact section */
-  .contact-container {
-    @apply max-w-xl relative z-10 sm:px-10 px-5 mt-12;
-  }
+/* contact section */
+.contact-container {
+  @apply max-w-4xl relative z-10 sm:px-10 px-5 mt-12;
+}
 
-  .field-label {
-    @apply text-lg text-white-600;
-  }
+.field-label {
+  @apply block mb-2 text-neutral-300 text-lg;
+}
 
-  .field-input {
-    @apply w-full bg-black-300 px-5 py-2 min-h-14 rounded-lg placeholder:text-white-500 text-lg text-white-800 shadow-black-200 shadow-2xl focus:outline-none;
-  }
+.field-input {
+  @apply w-full bg-neutral-700/50 border border-neutral-600 rounded-xl px-4 py-3 text-white focus:outline-none focus:ring-2 focus:ring-blue-500 transition-all text-lg placeholder:text-neutral-400;
+}
 
-  .field-btn {
-    @apply bg-black-500 px-5 py-2 min-h-12 rounded-lg shadow-black-200 shadow-2xl flex justify-center items-center text-lg text-white gap-3;
-  }
+.field-btn {
+  @apply w-full bg-gradient-to-r from-blue-600 to-purple-600 text-white py-4 rounded-xl hover:from-blue-700 hover:to-purple-700 transition-all flex items-center justify-center space-x-2 disabled:opacity-50 text-lg;
+}
 
-  .field-btn_arrow {
-    @apply w-2.5 h-2.5 object-contain invert brightness-0;
-  }
+.field-btn_arrow {
+  @apply w-5 h-5 ml-2 invert brightness-0;
+}
 
   /*  footer */
   .social-icon {

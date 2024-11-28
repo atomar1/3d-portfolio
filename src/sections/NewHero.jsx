@@ -23,7 +23,7 @@ const NewHero = () => {
   )
 
   return (
-    <section className="relative h-screen w-full overflow-hidden">
+    <section className="relative h-screen w-full overflow-hidden" id="home">
       {/* 3D Canvas Background */}
       <div className="absolute inset-0 w-full h-full">
         <Canvas
@@ -87,14 +87,14 @@ const NewHero = () => {
                 hey there, I am Ansh!
               </p>
               <p className="hero_tag text-gray_gradient lg:text-left lg:text-4xl xl:text-5xl">
-              Full-stack dev & aspiring entrepreneur
+              Full-stack dev & technology enthusiast
               </p>
               
               {/* Desktop button */}
               <div className="hidden lg:block mt-8">
                 <a href="#about" className="w-fit">
                   <Button 
-                    name="Let's work together" 
+                    name="Collaborate with Me" 
                     isBeam 
                     containerClass="w-fit min-w-[250px] xl:min-w-[300px]" 
                   />
@@ -109,7 +109,7 @@ const NewHero = () => {
           <div className="px-4 sm:px-6">
             <a href="#about" className="w-fit">
               <Button 
-                name="Let's work together" 
+                name="Collaborate with Me" 
                 isBeam 
                 containerClass="sm:w-fit w-full sm:min-w-96" 
               />
