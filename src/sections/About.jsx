@@ -95,7 +95,6 @@ const About = () => {
     'javascript',
     'typescript',
     'react',
-    'nextjs',
     'nodejs',
     'python',
     'mongodb',
@@ -105,7 +104,6 @@ const About = () => {
     'css3',
     'git',
     'github',
-    'vscode',
     'docker',
     'pytorch',
     'cplusplus'

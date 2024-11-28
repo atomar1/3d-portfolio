@@ -90,30 +90,6 @@ body {
     @apply w-10 h-10 rounded-md p-2 bg-neutral-100 bg-opacity-10 backdrop-filter backdrop-blur-lg flex justify-center items-center;
   }
 
-  /*  work experience section */
-  .work-container {
-    @apply grid lg:grid-cols-3 grid-cols-1 gap-5 mt-12;
-  }
-
-  .work-canvas {
-    @apply col-span-1 rounded-lg bg-black-200 border border-black-300;
-  }
-
-  .work-content {
-    @apply col-span-2 rounded-lg bg-black-200 border border-black-300;
-  }
-
-  .work-content_container {
-    @apply grid grid-cols-[auto_1fr] items-start gap-5  transition-all ease-in-out duration-500 cursor-pointer hover:bg-black-300 rounded-lg sm:px-5 px-2.5;
-  }
-
-  .work-content_logo {
-    @apply rounded-3xl w-16 h-16 p-2 bg-black-600;
-  }
-
-  .work-content_bar {
-    @apply flex-1 w-0.5 mt-4 h-full bg-black-300 group-hover:bg-black-500 group-last:hidden;
-  }
 
 /* contact section */
 .contact-container {
@@ -142,14 +118,6 @@ body {
   }
 }
 
-.waving-hand {
-  animation-name: wave-animation;
-  animation-duration: 2.5s;
-  animation-iteration-count: infinite;
-  transform-origin: 70% 70%;
-  display: inline-block;
-}
-
 .arrow-gradient {
   background-image: linear-gradient(
     to right,
@@ -158,31 +126,4 @@ body {
     rgba(255, 255, 255, 0.000025) 50%,
     rgba(255, 255, 255, 0.025) 100%
   );
-}
-
-@keyframes wave-animation {
-  0% {
-    transform: rotate(0deg);
-  }
-  15% {
-    transform: rotate(14deg);
-  }
-  30% {
-    transform: rotate(-8deg);
-  }
-  40% {
-    transform: rotate(14deg);
-  }
-  50% {
-    transform: rotate(-4deg);
-  }
-  60% {
-    transform: rotate(10deg);
-  }
-  70% {
-    transform: rotate(0deg);
-  }
-  100% {
-    transform: rotate(0deg);
-  }
 }
