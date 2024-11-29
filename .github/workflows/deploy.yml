@@ -35,9 +35,9 @@ jobs:
         with:
           name: production-files
           path: 
-            ./dist
-            ./dist/models
-            ./dist/assets/**
+            ../dist
+            ../dist/models
+            ../dist/assets/**
 
   deploy:
     name: Deploy
