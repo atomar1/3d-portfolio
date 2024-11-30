@@ -4,7 +4,7 @@ import { navLinks } from '../constants/index.js';
 
 const CustomLogo = () => (
   <img 
-  src="assets/Favicon.png" 
+  src="assets/Logo.png" 
   alt="Logo"
   className="w-6 h-6 object-contain"
 />
