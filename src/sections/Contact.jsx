@@ -71,7 +71,7 @@ const Contact = () => {
     >
       {/* Terminal Background */}
       <img 
-        src="/assets/terminal.png" 
+        src=" assets/terminal.png" 
         alt="terminal background" 
         className="absolute inset-0 w-full h-full object-cover opacity-20 pointer-events-none"
       />
