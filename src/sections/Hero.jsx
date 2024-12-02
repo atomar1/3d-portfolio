@@ -46,9 +46,9 @@ const Hero = () => {
             shadow-mapSize={1024}
           />
 
-          <group position={[1.8, -1, 0]}>
+          <group position={isMobile ? [0, -1, 0] : [1.8, -1, 0]}>
             <Instances>
-              <Computers scale={0.35} />
+              <Computers scale={isMobile ? 0.28 : 0.35} />
             </Instances>
             <mesh receiveShadow rotation={[-Math.PI / 2, 0, 0]}>
               <planeGeometry args={[50, 50]} />
@@ -65,7 +65,7 @@ const Hero = () => {
                 metalness={0.8}
               />
             </mesh>
-            <Bun scale={0.3} position={[0, 0.3, 0.5]} rotation={[0, -Math.PI * 0.85, 0]} />
+            <Bun scale={isMobile ? 0.23 : 0.3} position={[0, 0.3, 0.5]} rotation={[0, -Math.PI * 0.85, 0]} />
             <pointLight distance={1.5} intensity={1} position={[-0.15, 0.7, 0]} color="orange" />
           </group>
           <EffectComposer disableNormalPass>
@@ -77,46 +77,57 @@ const Hero = () => {
         </Canvas>
       </div>
 
-      {/* Content Overlay */}
-      <div className="relative z-10 h-full">
-        <div className="max-w-[2000px] mx-auto w-full h-full px-4 sm:px-6 lg:px-8 xl:px-12 2xl:px-16">
-          <div className="h-full flex flex-col lg:flex-row items-center justify-center lg:justify-between">
-            {/* Left side content */}
-            <div className="w-full lg:w-1/2 flex flex-col items-center lg:items-start sm:mt-36 mt-20 gap-3 lg:gap-6">
-              <p className="sm:text-2xl text-xl font-medium text-white/95 font-montserrat lg:text-3xl xl:text-4xl">
-                hey there, I am Ansh!
-              </p>
-              <p className="hero_tag text-gray_gradient lg:text-left lg:text-4xl xl:text-5xl">
-              Full-stack dev & technology enthusiast
-              </p>
-              
-              {/* Desktop button */}
-              <div className="hidden lg:block mt-8">
-                <a href="#about" className="w-fit">
-                  <Button 
-                    name="Collaborate with Me" 
-                    isBeam 
-                    containerClass="w-fit min-w-[250px] xl:min-w-[300px]" 
-                  />
-                </a>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        {/* Mobile/Tablet button */}
-        <div className="absolute bottom-7 left-0 right-0 w-full lg:hidden">
-          <div className="px-4 sm:px-6">
-            <a href="#about" className="w-fit">
-              <Button 
-                name="Collaborate with Me" 
-                isBeam 
-                containerClass="sm:w-fit w-full sm:min-w-96" 
-              />
-            </a>
-          </div>
+{/* Content Overlay - Large Screens */}
+<div className="relative z-10 h-full hidden lg:block">
+  <div className="max-w-[2000px] mx-auto w-full h-full px-4 sm:px-6 lg:px-8 xl:px-12 2xl:px-16">
+    <div className="h-full flex flex-col lg:flex-row items-center justify-center lg:justify-between">
+      {/* Left side content */}
+      <div className="w-full lg:w-1/2 flex flex-col items-center lg:items-start sm:mt-36 mt-20 gap-3 lg:gap-6">
+        <p className="sm:text-2xl text-xl font-medium text-white/95 font-montserrat lg:text-3xl xl:text-4xl">
+          hey there, I am Ansh!
+        </p>
+        <p className="hero_tag text-gray_gradient lg:text-left lg:text-4xl xl:text-5xl">
+          Full-stack dev & technology enthusiast
+        </p>
+        <div className="mt-8">
+          <a href="#about" className="w-fit">
+            <Button
+              name="Collaborate with Me"
+              isBeam
+              containerClass="w-fit min-w-[250px] xl:min-w-[300px]"
+            />
+          </a>
         </div>
       </div>
+    </div>
+  </div>
+</div>
+
+{/* Content Overlay - Mobile Screens */}
+<div className="relative z-20 px-4 sm:px-6 lg:hidden pt-20"> {/* Added pt-20 to push content down */}
+  <div className="max-w-[2000px] mx-auto w-full flex flex-col items-center gap-3 lg:gap-6">
+    <p className="sm:text-2xl text-xl font-medium text-white/95 font-montserrat lg:text-3xl xl:text-4xl">
+      hey there, I am Ansh!
+    </p>
+    <p className="hero_tag text-gray_gradient lg:text-left lg:text-4xl xl:text-5xl">
+      Full-stack dev & technology enthusiast
+    </p>
+  </div>
+</div>
+
+
+{/* Mobile/Tablet button */}
+<div className="absolute bottom-7 left-0 right-0 w-full lg:hidden">
+  <div className="px-4 sm:px-6">
+    <a href="#about" className="w-fit">
+      <Button
+        name="Collaborate with Me"
+        isBeam
+        containerClass="sm:w-fit w-full sm:min-w-96"
+      />
+    </a>
+  </div>
+</div>
     </section>
   )
 }
